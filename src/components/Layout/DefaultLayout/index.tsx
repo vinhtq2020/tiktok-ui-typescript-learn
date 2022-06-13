@@ -1,15 +1,18 @@
 import Header from "../components/Header";
 import Sidebar from "./Sidebar";
+import styles from './DefaultLayout.module.scss';
+import classNames from "classnames/bind";
 type Props = {
     children: JSX.Element;
 }
+const cx = classNames.bind(styles);
 export const DefaultLayout = ({ children }: Props) => {
     return (
-        <div>
+        <div className={cx('wrapper')}>
             <Header />
-            <div className="container">
+            <div className={cx('container')}>
                 <Sidebar />
-                <div className="content">{children}</div>
+                <h2 className={cx('content')}>{children}</h2>
             </div>
         </div>
     )
