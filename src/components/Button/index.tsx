@@ -16,7 +16,7 @@ interface Props {
     rounded?: boolean,
     className?: string,
     leftIcon?: React.ReactNode,
-    rightIcon?: React.ReactNode
+    rightIcon?: React.ReactNode,
 }
 const cx = classNames.bind(styles);
 export function Button({ href,

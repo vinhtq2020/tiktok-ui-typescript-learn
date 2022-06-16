@@ -1,23 +1,28 @@
 import classNames from "classnames/bind";
 import { Button } from "components/Button";
-import styles from './menu.module.scss'
-interface Props {
-    data: MenuItemModel;
-    onClick:()=>void
-}
+import styles from './Menu.module.scss'
+
 export interface MenuItemModel {
     icon?: React.ReactNode,
     title?: string,
     to?: string,
     children?: MenuItemModel,
-    data?:Array<any>,
+    data?: Array<any>,
     onClick?: () => void,
-    type?:string
+    type?: string,
+    separate?:boolean
+}
+
+interface Props {
+    data: MenuItemModel;
+    onClick: () => void
 }
 const cx = classNames.bind(styles);
 export function MenuItem({ data, onClick }: Props) {
-
+    const classes = cx('menu-item',{
+        separate:data.separate,
+    })
     return (
-        <Button leftIcon={data.icon} className={cx('menu-item')} to={data.to} onClick={onClick}>{data.title}</Button>
+        <Button leftIcon={data.icon} className={classes} to={data.to} onClick={onClick}>{data.title}</Button>
     )
 }
