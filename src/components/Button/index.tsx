@@ -15,24 +15,27 @@ interface Props {
     disabled?: boolean,
     rounded?: boolean,
     className?: string,
-    leftIcon?:React.ReactNode,
-    rightIcon?:React.ReactNode
+    leftIcon?: React.ReactNode,
+    rightIcon?: React.ReactNode
 }
 const cx = classNames.bind(styles);
-export function Button(props: Props) {
-    const { href,
-        children,
-        to,
-        primary = false,
-        outline = false,
-        small = false,
-        large = false,
-        text = false,
-        disabled = false,
-        className ='',
-        rounded = false,
-        leftIcon,
-    rightIcon } = props;
+export function Button({ href,
+    children,
+    to,
+    primary = false,
+    outline = false,
+    small = false,
+    large = false,
+    text = false,
+    disabled = false,
+    className = '',
+    rounded = false,
+    leftIcon,
+    rightIcon, onClick, ...passProps }: Props) {
+    const props = {
+        onClick,
+        ...passProps
+    }
     const classes = cx('wrapper', {
         [className]: className,
         primary,
@@ -56,6 +59,7 @@ export function Button(props: Props) {
     }
 
     if (!href && !to) {
+
         return (
             <button className={classes} {...props}>
                 {leftIcon && <span className={cx('icon')}>{leftIcon}</span>}
@@ -67,12 +71,23 @@ export function Button(props: Props) {
     }
     if (href && !to) {
         return (
-            <a className={classes} {...props}>{children}</a>
+
+            <a className={classes} {...props}>
+                {leftIcon && <span className={cx('icon')}>{leftIcon}</span>}
+                <span className={cx('title')}>{children}</span>
+                {rightIcon && <span className={cx('icon')}>{rightIcon}</span>}
+
+            </a>
+
         )
     }
     if (!href && to) {
         return (
-            <Link className={classes} {...props} to={to}>{children}</Link>
+            <Link className={classes} {...props} to={to}>
+                {leftIcon && <span className={cx('icon')}>{leftIcon}</span>}
+                <span className={cx('title')}>{children}</span>
+                {rightIcon && <span className={cx('icon')}>{rightIcon}</span>}
+            </Link>
         )
     }
     return null;
