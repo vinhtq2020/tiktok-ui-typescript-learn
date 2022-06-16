@@ -10,11 +10,43 @@ import { Wrapper as PopperWrapper } from 'components/Layout/Popper';
 import { AccountItem } from 'components/AccountItem';
 import { Button } from 'components/Button';
 import { Menu } from 'components/Layout/Popper/Menu';
+import { MenuItemModel } from 'components/Layout/Popper/Menu/MenuItem';
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
     {
         icon: <FontAwesomeIcon icon={faEarthAsia as IconProp} />,
         title: 'English',
+        children: {
+            title: 'Language',
+            data: [
+                {
+                    type: 'language',
+                    code: 'en',
+                    title: 'English',
+                    children: {
+                        data: [
+                            {
+                                type: 'language',
+                                title: 'English 1',
+                                children: {
+                                    data: [
+                                        {
+                                            type: 'language', title: 'English 1A'
+                                        },
+                                        { type: 'language', title: 'English 1B' },
+                                    ]
+                                }
+                            }
+                        ]
+                    }
+                },
+                {
+                    type: 'language',
+                    code: 'vi',
+                    title: 'Vietnamese'
+                }
+            ]
+        }
     },
     {
         icon: <FontAwesomeIcon icon={faCircleQuestion as IconProp} />,
@@ -28,6 +60,13 @@ const MENU_ITEMS = [
 ]
 function Header() {
     const [searchResult, setSearchResult] = useState<any>([]);
+    const handleMenuChange = (menuItem:MenuItemModel)=>{
+        switch(menuItem.type){
+            case 'language':break;
+            default:break;
+
+        }
+    }
     useEffect(() => {
         setTimeout(() => {
             setSearchResult([])

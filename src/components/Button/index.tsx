@@ -72,7 +72,7 @@ export function Button({ href,
     if (href && !to) {
         return (
 
-            <a className={classes} {...props}>
+            <a className={classes} {...props} href={href}>
                 {leftIcon && <span className={cx('icon')}>{leftIcon}</span>}
                 <span className={cx('title')}>{children}</span>
                 {rightIcon && <span className={cx('icon')}>{rightIcon}</span>}
