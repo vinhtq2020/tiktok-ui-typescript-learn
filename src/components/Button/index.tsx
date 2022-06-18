@@ -1,4 +1,5 @@
 import classNames from 'classnames/bind';
+import React from 'react';
 import { Link, To } from 'react-router-dom';
 import styles from './Button.module.scss';
 
@@ -8,7 +9,8 @@ interface Props {
     onClick?: () => void,
     children: React.ReactNode,
     primary?: boolean,
-    outline?: boolean,
+    outline__primary?: boolean,
+    outline__secondary?: boolean,
     small?: boolean,
     large?: boolean,
     text?: boolean,
@@ -19,11 +21,12 @@ interface Props {
     rightIcon?: React.ReactNode,
 }
 const cx = classNames.bind(styles);
-export function Button({ href,
+export const Button = React.forwardRef<any, Props>(({ href,
     children,
     to,
     primary = false,
-    outline = false,
+    outline__primary = false,
+    outline__secondary = false,
     small = false,
     large = false,
     text = false,
@@ -31,7 +34,7 @@ export function Button({ href,
     className = '',
     rounded = false,
     leftIcon,
-    rightIcon, onClick, ...passProps }: Props) {
+    rightIcon, onClick, ...passProps }, ref) => {
     const props = {
         onClick,
         ...passProps
@@ -39,7 +42,8 @@ export function Button({ href,
     const classes = cx('wrapper', {
         [className]: className,
         primary,
-        outline,
+        outline__primary,
+        outline__secondary,
         small,
         large,
         text,
@@ -61,7 +65,7 @@ export function Button({ href,
     if (!href && !to) {
 
         return (
-            <button className={classes} {...props}>
+            <button className={classes} {...props} ref={ref}>
                 {leftIcon && <span className={cx('icon')}>{leftIcon}</span>}
                 <span className={cx('title')}>{children}</span>
                 {rightIcon && <span className={cx('icon')}>{rightIcon}</span>}
@@ -72,7 +76,7 @@ export function Button({ href,
     if (href && !to) {
         return (
 
-            <a className={classes} {...props} href={href}>
+            <a className={classes} {...props} href={href} ref={ref}>
                 {leftIcon && <span className={cx('icon')}>{leftIcon}</span>}
                 <span className={cx('title')}>{children}</span>
                 {rightIcon && <span className={cx('icon')}>{rightIcon}</span>}
@@ -83,7 +87,7 @@ export function Button({ href,
     }
     if (!href && to) {
         return (
-            <Link className={classes} {...props} to={to}>
+            <Link className={classes} {...props} to={to} ref={ref}>
                 {leftIcon && <span className={cx('icon')}>{leftIcon}</span>}
                 <span className={cx('title')}>{children}</span>
                 {rightIcon && <span className={cx('icon')}>{rightIcon}</span>}
@@ -92,4 +96,4 @@ export function Button({ href,
     }
     return null;
 
-}
+})

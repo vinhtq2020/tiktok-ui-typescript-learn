@@ -3,21 +3,29 @@ import styles from './AccountItem.module.scss'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons"
 import { IconProp } from "@fortawesome/fontawesome-svg-core"
+import { Image } from "components/Image"
+import { User } from "service/User"
+import { Link } from "react-router-dom"
+
+interface Props {
+    data: User
+}
 const cx = classNames.bind(styles)
-export function AccountItem() {
+export function AccountItem({ data }: Props) {
     return (
-        <div className={cx('wrapper')}>
-            <img className={cx('avatar')} src="https://upload.wikimedia.org/wikipedia/commons/8/8c/Cristiano_Ronaldo_2018.jpg" alt="Hoaa" />
+        <Link to={`/@${data.nickname}`} className={cx('wrapper')}>
+            <Image className={cx('avatar')} src={data.avatar} alt={data.nickname} />
             <div className={cx('info')}>
                 <h4>
                     <p className={cx('name')}>
-                        <span>Nguyen Van A</span>
-                        <FontAwesomeIcon className={cx('check')} icon={faCheckCircle as IconProp} /></p>
+                        <span>{data.full_name}</span>
+                        {data.tick && <FontAwesomeIcon className={cx('check')} icon={faCheckCircle as IconProp} />}
+                    </p>
 
                 </h4>
-                <span className={cx('username')}>nguyenvana</span>
+                <span className={cx('username')}>{data.nickname}</span>
             </div>
 
-        </div>
+        </Link>
     )
 }

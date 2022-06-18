@@ -1,6 +1,7 @@
 .wrapper {
     font-size: 1.6rem;
-    font-weight: 700;
+    font-weight: 600;
+    font-family: 'ProximaNova', sans-serif;
     min-width: 100px;
     padding: 9px 16px;
     border-radius: 4px;
@@ -44,7 +45,7 @@
     }
 }
 
-.outline {
+.outline__primary {
     color: var(--primary);
     border-color: currentColor;
 
@@ -53,7 +54,10 @@
         background-color: rgba(254, 44, 85, 0.06);
     }
 }
-
+.outline__secondary{
+    color:var(--text-color);
+    border: 1px solid var(--secondary);
+}
 .small {
     min-width: 88px;
     padding: 4px 16px;
