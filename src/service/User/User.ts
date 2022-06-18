@@ -17,3 +17,10 @@ export interface User {
     created_at?: Date,
     update_at?: Date,
 }
+export interface UserFilter {
+    q?:string,
+    type?:'less',
+}
+export interface UserService {
+    search(params:any):Promise<any>;
+}

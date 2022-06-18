@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons"
 import { IconProp } from "@fortawesome/fontawesome-svg-core"
 import { Image } from "components/Image"
-import { User } from "service/User"
+import { User } from "service/user"
 import { Link } from "react-router-dom"
 
 interface Props {
