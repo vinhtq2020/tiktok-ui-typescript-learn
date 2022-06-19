@@ -14,7 +14,7 @@ interface Props {
 
 const cx = classNames.bind(styles);
 
-export function Menu({ children, items = [], onChange = (item) => { console.log(item); }, hideOnClick = false ,...passProps}: Props) {
+export function Menu({ children, items = [], onChange = (item) => { console.log(item); }, hideOnClick = false, ...passProps }: Props) {
     const [history, setHistory] = useState<MenuItemModel[]>([{ data: items }]);
 
     const current = history[history.length - 1];
@@ -32,7 +32,22 @@ export function Menu({ children, items = [], onChange = (item) => { console.log(
             )
         })
     }
-
+    const renderResult = (attrs: any) => (
+        <div className={cx('menu-list')} tabIndex={-1} {...attrs}>
+            <PopperWrapper className={cx('menu-popper')}>
+                {history.length > 1 && <HeaderMenu title="Language" onBack={handleBack}></HeaderMenu>}
+                <div className={cx('menu-body')}>
+                    {renderItems()}
+                </div>
+            </PopperWrapper>
+        </div>
+    )
+    const handleResetMenu = () => {
+        setHistory(prev => prev.slice(0, 1))
+    }
+    const handleBack = () => {
+        setHistory(history.slice(0, history.length - 1));
+    }
     return (
         <Tippy
             {...passProps}
@@ -41,20 +56,8 @@ export function Menu({ children, items = [], onChange = (item) => { console.log(
             delay={[0, 700]}
             offset={[12, 8]}
             placement="bottom-end"
-            render={attrs => (
-                <div className={cx('menu-list')} tabIndex={-1} {...attrs}>
-                    <PopperWrapper className={cx('menu-popper')}>
-                        {history.length > 1 && <HeaderMenu title="Language" onBack={() => {
-                            setHistory(history.slice(0, history.length - 1));
-
-                        }}></HeaderMenu>}
-                        <div className={cx('menu-body')}>
-                        {renderItems()}
-                        </div>
-                    </PopperWrapper>
-                </div>
-            )}
-            onHide={() => setHistory(prev => prev.slice(0, 1))}
+            render={renderResult}
+            onHide={handleResetMenu}
         >
             {children}
         </Tippy>

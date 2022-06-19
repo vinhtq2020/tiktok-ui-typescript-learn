@@ -330,7 +330,7 @@ export function Header() {
                         : (
                             <>
                                 <Button outline__secondary leftIcon={<FontAwesomeIcon icon={faPlus as IconProp} />}>Upload</Button>
-                                <Button primary={true}>Login</Button>
+                                <Button  primary>Login</Button>
                             </>
                         )}
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange} hideOnClick={false} >

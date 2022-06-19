@@ -20,6 +20,7 @@
         border: none;
         color: #828282;
         caret-color: var(--primary);
+        padding-right: 40px;
     }
     input:not(:placeholder-shown) ~ .search-btn{
         color: rgba(22,24,35,0.75);

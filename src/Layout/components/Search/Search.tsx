@@ -14,29 +14,29 @@ import { AccountItem } from '../../../components/AccountItem';
 
 const cx = classNames.bind(styles);
 export const Search = () => {
-    const [showResult, setShowResult] = useState(true);
+    const [showResult, setShowResult] = useState(false);
     const [keyword, setKeyword] = useState('');
     const [searchResult, setSearchResult] = useState<User[]>([]);
     const [loading, setLoading] = useState(false);
     const inputRef = useRef<HTMLInputElement>(null);
-    const debounce = useDebounce(keyword, 500);
+    const debouncedValue = useDebounce(keyword, 500);
     const service = useUser();
     useEffect(() => {
-        if (!debounce.trim()) { setSearchResult([]); return; };
+        if (!debouncedValue.trim()) { setSearchResult([]); return; };
         setLoading(true);
         // axios.get('https://tiktok.fullstack.edu.vn/api/users/search', {
         //     params: {
-        //         q: debounce,
+        //         q: debouncedValue,
         //         type: 'less'
         //     }
         // })
-        service.search({ q: encodeURIComponent(debounce), type: "less" })
+        service.search({ q: encodeURIComponent(debouncedValue), type: "less" })
             .then(res => {
              setSearchResult(res.data);
               setLoading(false) })
             .catch(() => setLoading(false));
 
-    }, [debounce])
+    }, [debouncedValue])
 
     const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         const searchValue = e.target.value;

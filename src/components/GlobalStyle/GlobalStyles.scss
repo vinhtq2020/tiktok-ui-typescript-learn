@@ -4,11 +4,11 @@
 :root {
     --primary: #fe2c55;
     --black: #000;
-    --secondary:#eee;
+    --secondary: #eee;
     --text-color: #161823;
     --white: #fff;
 
-    --font-family:'ProximaNova', sans-serif;
+    --font-family: 'ProximaNova', sans-serif;
     // Default layout
     --default-layout-header-height: 60px;
     --default-layout-width: 1150px;
@@ -39,7 +39,7 @@ input,
     border: none;
 }
 
-a[href] {
+a {
     color: var(--text-color);
     text-decoration: none;
 }
@@ -50,21 +50,25 @@ a[href] {
     src: url('/assets/fonts/Proxima-Nova-Regular.woff2');
     font-weight: 400;
 }
+
 @font-face {
     font-family: ProximaNova;
     src: url('/assets/fonts/Proxima-Nova-Semibold.woff2');
     font-weight: 600;
 }
+
 @font-face {
     font-family: ProximaNova;
     src: url('/assets/fonts/Proxima-Nova-Bold.woff');
     font-weight: 700;
 }
+
 @font-face {
     font-family: SofiaPro;
     src: url('/assets/fonts/sofiapro-bold.woff2');
     font-weight: 700;
 }
+
 @font-face {
     font-family: SofiaPro;
     src: url('/assets/fonts/sofiapro-medium.woff');
@@ -82,13 +86,16 @@ body {
         line-height: 2.2rem;
         background-color: rgba(84, 84, 84, 0.92);
     }
-    .tippy-arrow{
+
+    .tippy-arrow {
         color: rgba(84, 84, 84, 0.92);
     }
-    .tippy-box[data-placement^=bottom]>.tippy-arrow{
-        top:-1px
+
+    .tippy-box[data-placement^=bottom]>.tippy-arrow {
+        top: -1px
     }
-    .tippy-content{
+
+    .tippy-content {
         padding: 8px 9px;
     }
 }
@@ -96,10 +103,6 @@ body {
 // Scrollbar
 
 
-html *::-webkit-scrollbar {
-    border-radius: 0;
-    width: 8px;
-}
 
 html *::-webkit-scrollbar {
     border-radius: 0;
@@ -111,15 +114,6 @@ html *::-webkit-scrollbar-thumb {
     background-color: rgba(0, 0, 0, .15);
 }
 
-html *::-webkit-scrollbar-thumb {
-    border-radius: 4px;
-    background-color: rgba(0, 0, 0, .15);
-}
-
-html *::-webkit-scrollbar-track {
-    border-radius: 0;
-    background-color: rgba(0, 0, 0, 0);
-}
 
 html *::-webkit-scrollbar-track {
     border-radius: 0;
