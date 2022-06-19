@@ -7,9 +7,9 @@ import 'tippy.js/dist/tippy.css'
 import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
 import React, { useEffect, useRef, useState } from 'react';
-import { useDebounce } from '../../../../hooks/useDebounce';
-import { User, useUser } from '../../../../service';
-import { AccountItem } from '../../../AccountItem';
+import { useDebounce } from '../../../hooks/useDebounce';
+import { User, useUser } from '../../../service';
+import { AccountItem } from '../../../components/AccountItem';
 
 
 const cx = classNames.bind(styles);

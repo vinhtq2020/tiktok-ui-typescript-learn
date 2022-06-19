@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { storage } from './common/uione';
 import GlobalStyles from './components/GlobalStyle';
-import { DefaultLayout } from './components/Layout';
+import { DefaultLayout } from './Layout';
 import { config } from './config';
 import { publicRoutes, route } from './routes';
 function App() {

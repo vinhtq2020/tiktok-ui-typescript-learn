@@ -10,11 +10,11 @@ import { faMessage, faPaperPlane } from '@fortawesome/free-regular-svg-icons';
 import { Search } from '../Search';
 import { Link } from 'react-router-dom';
 import { MenuItemModel } from '../../Popper/Menu/MenuItem';
-import { routesConfig } from '../../../../routes';
-import { images } from '../../../../assets/images';
-import { Button } from '../../../Button';
+import { routesConfig } from '../../../routes';
+import { images } from '../../../assets/images';
+import { Button } from '../../../components/Button';
 import { Menu } from '../../Popper/Menu';
-import { Image } from '../../../Image';
+import { Image } from '../../../components/Image';
 
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [

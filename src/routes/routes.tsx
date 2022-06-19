@@ -1,7 +1,7 @@
 
 import React from "react"
-import { HeaderOnly } from "../components/Layout/HeaderOnly";
-import { Search } from "../components/Layout/components/Search";
+import { HeaderOnly } from "../Layout/HeaderOnly";
+import { Search } from "../Layout/components/Search";
 import Following from "../pages/Following";
 import Home from "../pages/Home";
 import Profile from "../pages/Profile";
