@@ -1,6 +1,6 @@
-import { images } from "assets/images";
 import classNames from "classnames";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
+import { images } from "../../assets/images";
 import styles from './Image.module.scss';
 interface Props extends React.ComponentPropsWithoutRef<'img'> {
     customFallback?:any;

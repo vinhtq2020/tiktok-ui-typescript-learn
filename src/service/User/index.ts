@@ -1,5 +1,5 @@
-import { HttpRequest } from 'common/axios-core';
-import { User, UserService } from './user';
+import { HttpRequest } from '../../common/axios-core';
+import {  UserService } from './user';
 
 export * from './user'
 

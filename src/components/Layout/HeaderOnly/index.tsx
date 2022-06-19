@@ -1,4 +1,4 @@
-import Header from "../components/Header";
+import { Header } from "../components";
 
 type Props = {
     children?: React.ReactNode;
@@ -13,5 +13,3 @@ export const HeaderOnly = ({ children }:Props) => {
         </div>
     )
 }
-
-export default HeaderOnly;

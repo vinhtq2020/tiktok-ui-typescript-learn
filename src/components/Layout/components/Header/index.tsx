@@ -2,16 +2,19 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faCircleQuestion, faCoins, faEarthAsia, faEllipsisVertical, faGear, faKeyboard, faPlus, faSignOut, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Tippy from '@tippyjs/react';
-import { images } from 'assets/images';
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
-import { Button } from 'components/Button';
-import { Menu } from 'components/Layout/Popper/Menu';
-import { MenuItemModel } from 'components/Layout/Popper/Menu/MenuItem';
+
 import 'tippy.js/dist/tippy.css'
-import { Image } from 'components/Image';
 import { faMessage, faPaperPlane } from '@fortawesome/free-regular-svg-icons';
 import { Search } from '../Search';
+import { Link } from 'react-router-dom';
+import { MenuItemModel } from '../../Popper/Menu/MenuItem';
+import { routesConfig } from '../../../../routes';
+import { images } from '../../../../assets/images';
+import { Button } from '../../../Button';
+import { Menu } from '../../Popper/Menu';
+import { Image } from '../../../Image';
 
 const cx = classNames.bind(styles);
 const MENU_ITEMS = [
@@ -64,13 +67,13 @@ const MENU_ITEMS = [
 
 
 
-function Header() {
-   
-    
-    
+export function Header() {
+
+
+
     const currentUser = true;
-    
-   
+
+
     const handleMenuChange = (menuItem: MenuItemModel) => {
         switch (menuItem.type) {
             case 'language': break;
@@ -107,8 +110,10 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <img src={images.logo} alt="" />
-                <Search/>
+                <Link to={routesConfig.home} className={cx('logo-link')}>
+                    <img src={images.logo} alt="Tiktok" />
+                </Link>
+                <Search />
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <>
@@ -117,11 +122,18 @@ function Header() {
                                     Upload
                                 </Button>
                             </Tippy>
-                            <Tippy delay={[0, 200]} trigger='click'  placement='bottom' content="Messenger">
-                                <button className={cx('action-btn')}><FontAwesomeIcon icon={faPaperPlane as IconProp}/></button>
+                            <Tippy delay={[0, 200]} trigger='click' placement='bottom' content="Messenger">
+                                <button className={cx('action-btn')}><FontAwesomeIcon icon={faPaperPlane as IconProp} /></button>
                             </Tippy>
-                            <Tippy delay={[0, 200]} trigger='click'  placement='bottom' content="Inbox">
-                                <button className={cx('action-btn')}><FontAwesomeIcon icon={faMessage as IconProp}/></button>
+                            <Tippy delay={[0, 200]} trigger='click' placement='bottom' content="Inbox">
+                                <div>
+                                    <button className={cx('action-btn')}>
+                                        <FontAwesomeIcon icon={faMessage as IconProp} />
+                                        <span className={cx('badge')}>12</span>
+
+                                    </button>
+
+                                </div>
                             </Tippy>
                         </>
                     )
@@ -131,7 +143,7 @@ function Header() {
                                 <Button primary={true}>Login</Button>
                             </>
                         )}
-                    <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
+                    <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange} hideOnClick={false} >
                         {currentUser ? (
                             <Image className={cx('user-avatar')} alt="Hà Lan" src={""} />
                         ) : (
@@ -146,5 +158,3 @@ function Header() {
         </header >
     )
 }
-
-export default Header;

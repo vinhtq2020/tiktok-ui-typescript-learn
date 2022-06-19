@@ -1,5 +1,4 @@
 import { AxiosInstance } from "axios";
-import { param } from "common/web-clients";
 export interface Headers {
     [key: string]: any
 }

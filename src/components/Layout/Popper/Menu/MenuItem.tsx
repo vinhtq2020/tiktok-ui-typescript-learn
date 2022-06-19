@@ -1,5 +1,5 @@
 import classNames from "classnames/bind";
-import { Button } from "components/Button";
+import { Button } from "../../../Button";
 import styles from './Menu.module.scss'
 
 export interface MenuItemModel {

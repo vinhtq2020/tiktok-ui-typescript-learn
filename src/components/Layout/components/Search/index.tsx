@@ -2,17 +2,15 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faCircleXmark, faMagnifyingGlass, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import HeadlessTippy from '@tippyjs/react/headless';
-import { Wrapper as PopperWrapper } from 'components/Layout/Popper';
-import { AccountItem } from 'components/AccountItem';
+import { Wrapper as PopperWrapper } from '../../Popper';
 import 'tippy.js/dist/tippy.css'
 import classNames from 'classnames/bind';
 import styles from './Search.module.scss';
 import React, { useEffect, useRef, useState } from 'react';
-import { User } from 'service/user';
-import { useDebounce } from 'hooks/useDebounce';
-import { useUser } from 'service';
-import { log } from 'console';
-import axios from 'axios';
+import { useDebounce } from '../../../../hooks/useDebounce';
+import { User, useUser } from '../../../../service';
+import { AccountItem } from '../../../AccountItem';
+
 
 const cx = classNames.bind(styles);
 export const Search = () => {
@@ -41,8 +39,9 @@ export const Search = () => {
     }, [debounce])
 
     const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e) {
-            setKeyword(e.target.value);
+        const searchValue = e.target.value;
+        if (!searchValue.startsWith(' ')) {
+            setKeyword(searchValue);
         }
     }
     const handleClear = () => {
@@ -54,6 +53,10 @@ export const Search = () => {
     }
     const handleHideResult = () => {
         setShowResult(false);
+    }
+
+    const handleSubmit = (e:React.MouseEvent<Element,MouseEvent>)=>{
+        e.preventDefault();
     }
     return (
         <>
@@ -83,7 +86,7 @@ export const Search = () => {
                     {loading && <FontAwesomeIcon icon={faSpinner as IconProp} className={cx("loading")}></FontAwesomeIcon>}
 
                     <button className={cx('search-btn')}>
-                        <FontAwesomeIcon icon={faMagnifyingGlass as IconProp}></FontAwesomeIcon>
+                        <FontAwesomeIcon icon={faMagnifyingGlass as IconProp} onMouseDown={(e)=>{handleSubmit(e)}}></FontAwesomeIcon>
                     </button>
                 </div>
             </HeadlessTippy>

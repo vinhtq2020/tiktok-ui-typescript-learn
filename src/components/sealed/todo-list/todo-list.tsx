@@ -1,5 +1,5 @@
-import { actions, useStore } from "components/sealed/store";
 import { useRef } from "react";
+import { actions, useStore } from "../store";
 
 
 export const TodoList = () => {

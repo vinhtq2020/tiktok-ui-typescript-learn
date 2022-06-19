@@ -1,8 +1,8 @@
 .wrapper {
     --search-border-radius: 92px;
-    --search-height:46px;
-    --search-top-spacer:9px;
-    --search-button-width:52px;    
+    --search-height: 46px;
+    --search-top-spacer: 9px;
+    --search-button-width: 52px;
     width: 100%;
     height: var(--default-layout-header-height, 60px);
     box-shadow: 0px 1px 1px rgb(0 0 0 / 12%);
@@ -28,15 +28,16 @@
     align-items: center;
 }
 
-.action-btn{
+.action-btn {
     color: #161823;
     font-size: 2.2rem;
     background: transparent;
     padding: 4px 12px;
     cursor: pointer;
+    position: relative;
 }
 
-.more-btn{
+.more-btn {
     font-size: 2rem;
     margin-left: 29px;
     padding: 8px;
@@ -44,10 +45,26 @@
     cursor: pointer;
 }
 
-.user-avatar{
+.badge {
+    position: absolute;
+    color: var(--white);
+    background-color: var(--primary);
+    font-size: 1.2rem;
+    border-radius: 10px;
+    padding: 0 6px;
+    right: 0px;
+    top: -3px;
+    height: 2rem;
+    line-height: 2rem;
+    font-weight: 600;
+    font-family: var(--font-family);
+}
+
+.user-avatar {
     width: 32px;
     border-radius: 50%;
     height: 32px;
     object-fit: cover;
     margin-left: 12px;
+    cursor: pointer;
 }
