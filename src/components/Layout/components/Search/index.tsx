@@ -59,8 +59,10 @@ export const Search = () => {
         e.preventDefault();
     }
     return (
-        <>
-            <HeadlessTippy visible={searchResult.length > 0 && showResult} interactive
+        // Using a wrapper <div> or <span> tag around the reference element solves this by 
+        // creating a new parentNode context.
+        <div>
+            <HeadlessTippy  visible={searchResult.length > 0 && showResult} interactive
                 render={attrs => (
                     <div className={cx('search-result')} tabIndex={-1} {...attrs}>
                         <PopperWrapper>
@@ -90,6 +92,6 @@ export const Search = () => {
                     </button>
                 </div>
             </HeadlessTippy>
-        </>
+        </div>
     )
 }

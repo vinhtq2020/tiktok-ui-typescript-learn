@@ -14,7 +14,7 @@ interface Props {
 
 const cx = classNames.bind(styles);
 
-export function Menu({ children, items = [], onChange = (item) => { console.log(item); }, hideOnClick = false }: Props) {
+export function Menu({ children, items = [], onChange = (item) => { console.log(item); }, hideOnClick = false ,...passProps}: Props) {
     const [history, setHistory] = useState<MenuItemModel[]>([{ data: items }]);
 
     const current = history[history.length - 1];
@@ -35,6 +35,7 @@ export function Menu({ children, items = [], onChange = (item) => { console.log(
 
     return (
         <Tippy
+            {...passProps}
             hideOnClick={hideOnClick}
             interactive={true}
             delay={[0, 700]}
@@ -47,7 +48,9 @@ export function Menu({ children, items = [], onChange = (item) => { console.log(
                             setHistory(history.slice(0, history.length - 1));
 
                         }}></HeaderMenu>}
+                        <div className={cx('menu-body')}>
                         {renderItems()}
+                        </div>
                     </PopperWrapper>
                 </div>
             )}
