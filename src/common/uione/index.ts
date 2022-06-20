@@ -7,12 +7,18 @@ class s {
     private static _c: any;
     private static _user: UserAccount | null | undefined;
     static _sessionStorageAllowed = true;
-
+    private static _route: any;
     static setConfig(c: any): void {
         return s._c = c;
     }
     static getConfig(): any {
         return s._c;
+    }
+    static setRoutes(route: any): any {
+        return s._route = route;
+    }
+    static getRoutes(): any {
+        return s._route;
     }
     static user(profile?: string): UserAccount | null | undefined {
         let u = s._user;
@@ -42,7 +48,7 @@ interface Headers {
 interface Params {
     [key: string]: any;
 }
-export function options(params:Params): { headers?: Headers, params?: Params } {
+export function options(params: Params): { headers?: Headers, params?: Params } {
     const t = s.token();
     if (t) {
         return {

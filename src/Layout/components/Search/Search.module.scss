@@ -12,13 +12,13 @@
     border-radius: 92px;
     border: 1.5px solid transparent;
     input {
+        font-family: var(--font-family);
         flex: 1;
         color: var(--black);
         height: 100%;
         font-size: 1.6rem;
         background-color: transparent;
         border: none;
-        color: #828282;
         caret-color: var(--primary);
         padding-right: 40px;
     }
